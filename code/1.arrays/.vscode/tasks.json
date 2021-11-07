@@ -8,7 +8,9 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "main.c",
                 "array_data_structure.c",
+                "linked_lists.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
