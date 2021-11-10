@@ -12,12 +12,12 @@ int main()
     // update_element_on_array();
 
     // LINKED LISTs
-    // main_linked_lists_functions();
+    // main_linked_lists_functions();   // Doesen't work
 
-     main_test_file();
+    linked_list_main_function_2();
 
 
-
+    // main_test_file();
     printf("\n\r------------- DONE -------------\n\r");
 
 

@@ -1,22 +1,23 @@
-
 #include <stdio.h>
-#include <stdbool.h>
+#include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "linked_list.h"
 
 int length(void);
 void printList(void);
+bool isEmpty(void);
 void insertFirst(int key, int data);
-//struct node* deleteFirst(void);
+struct node* deleteFirst(void);
 
 struct node {
     int data;
     int key;
     struct node *next;
 };
-struct nade *head = NULL;           // Create pointer on head
-struct node *current = NULL;        // Create pointer on current 
+struct nade *head = NULL;           // Create global pointer on head
+struct node *current = NULL;        // Create global pointer on current 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // ------------------------------------------------------------------------------------------------
@@ -38,7 +39,7 @@ void main_linked_lists_functions(void)
     int number = length();
     printf("Linked list has %d elements\n\r", number);
 
-    // Problems start below  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // Problems start below  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     printf("TEST !!!\n\r");
     printf("TEST !!!\n\r");
     printf("TEST !!!\n\r");
@@ -46,7 +47,15 @@ void main_linked_lists_functions(void)
     printf("TEST !!!\n\r");
 
     printList();
-    // struct node *temp = deleteFirst();
+    //struct node *temp_p;
+    //temp_p = &node;
+
+    while(!isEmpty())
+    {
+        struct node *temp = deleteFirst();  
+        printList();
+    }
+    
 
     printList();
 
@@ -100,13 +109,20 @@ void insertFirst(int key, int data)
 }
 // ------------------------------------------------------------------------------------------------
 // Delete firct item
-// struct node* deleteFirst(void)
-// {
-//     struct node *tempLink = head;           // Save refernse to first link
-//     head = head -> next;                        // Mark next to first link
+struct node* deleteFirst()
+{
+    struct node *ptr = head; 
 
-//     return tempLink;                        // Return the deleted link
-// }
+    struct node *tempLink;           // Save refernse to first link
+    tempLink = (struct nade*) malloc(sizeof (struct node));
+
+    //head = head->next;
+
+    // struct node *tempLink = head;           // Save refernse to first link
+    // head = head -> next;                    // Mark next to first link
+
+    return tempLink;                        // Return the deleted link
+}
 // ------------------------------------------------------------------------------------------------
 // Is list empty
 bool isEmpty(void)
