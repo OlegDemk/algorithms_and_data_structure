@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}","arrays.c","linked_list.c","test.c","linked_list_2.c",
+                "${file}","arrays.c","linked_list.c","test.c","doubly_linked_list.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

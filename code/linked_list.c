@@ -5,26 +5,32 @@
 
 #include "linked_list.h"
 
-int length(void);
+int lenght(void);
 void printList(void);
 bool isEmpty(void);
 void insertFirst(int key, int data);
 struct node* deleteFirst(void);
+struct node *find(int key);
+struct node* delete(int key);
+void sort(void);
+void reverse(struct node** head_ref);
 
 struct node {
     int data;
     int key;
     struct node *next;
 };
-struct nade *head = NULL;           // Create global pointer on head
+
+struct node *head = NULL;           // Create global pointer on head
 struct node *current = NULL;        // Create global pointer on current 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // ------------------------------------------------------------------------------------------------
-void main_linked_lists_functions(void)
+void linked_lists_main_functions(void)
 {
-    printf("Linked lists\n\r");
-
+    printf("LINKED LIST\n\r");
+    // 1. Fill in linked list
+    printf(">>>>>>>>>>>>   1. Add new nodes to linked list\n\r");
     insertFirst(1,10);
     insertFirst(2,20);
     insertFirst(3,30);
@@ -32,54 +38,80 @@ void main_linked_lists_functions(void)
     insertFirst(5,50);
     insertFirst(6,60);
  
+    // 2. Print created linked list
+    printf(">>>>>>>>>>>>   2. Print added nodes linked list\n\r");
     printf("Original list\n\r");
-
     printList();
 
-    int number = length();
+    // 3. Maesure lenght of current linked list (how many elements there)
+    printf(">>>>>>>>>>>>   3. Measure lenght of linked list\n\r");
+    int number = lenght();
     printf("Linked list has %d elements\n\r", number);
 
-    // Problems start below  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    printf("TEST !!!\n\r");
-    printf("TEST !!!\n\r");
-    printf("TEST !!!\n\r");
-    printf("TEST !!!\n\r");
-    printf("TEST !!!\n\r");
-
-    printList();
-    //struct node *temp_p;
-    //temp_p = &node;
-
-    while(!isEmpty())
+    // 4. Found node of list spesial key
+    printf(">>>>>>>>>>>>   4. Found node in linked list\n\r");
+    struct node *foundLink = find(3);
+    if(foundLink != NULL)
     {
-        struct node *temp = deleteFirst();  
+        printf("Elemt found\n\r");
+        printf("(%d, %d)\n\r", foundLink->key, foundLink->data);   
+    }   
+    else
+    {
+        printf("Element not found\n\r");
+    } 
+
+    // 5. Delete first node from linked list     (Delete all nodes from linked list) 
+    printf(">>>>>>>>>>>>   5. Delete first node from linked list\n\r"); 
+    printf("Linked before deleteFirst\n\r");   
+    number = lenght();
+    printf("Linked list has %d elements\n\r", number);
+    printList();
+    while(!isEmpty())                               // Delete all nodes from list 
+    {
+        struct node *temp = deleteFirst();   
         printList();
     }
-    
-
+    printf("Linked after deleteFirst\n\r");
+    number = lenght();
+    printf("Linked list has %d elements\n\r", number);
     printList();
 
-    // int number = length();
-    // printf("Linked list has %d elements\n\r", number);
+    // 6. Delete node usin key
+    printf(">>>>>>>>>>>>   6. Print delete some node from linked list\n\r");
+    // Add nodes
+    printf("Creating new linked list\n\r");
+    insertFirst(4, 44);
+    insertFirst(2, 22);
+    insertFirst(7, 77);
+    insertFirst(1, 11);
+    insertFirst(9, 99);
+    printList();
+    number = lenght();
+    printf("Linked list has %d elements\n\r", number);
+    printf("Delete one node\n\r");
+    delete(2);
+    number = lenght();
+    printf("Linked list has %d elements\n\r", number);
+    printList();
+ 
+    // 7. Sort
+    printf(">>>>>>>>>>>>   7. Sort nodes linked list\n\r");
+    printf("Sort linked list\n\r");
+    printf("Linked list before sort\n\r");
+    printList();
+    sort();
+    printf("Linked list after sort\n\r");
+    printList();
 
-    // insertFirst(7,70);
-
-    // number = length();
-    // printf("Linked list has %d elements\n\r", number);
-
-    // struct node *foundLink = find(3);
-    // if(foundLink != NULL)
-    // {
-    //     printf("Elemt found\n\r");
-    //     printf("(%d, %d)\n\r", foundLink->key, foundLink->data);   
-    // }   
-    // else
-    // {
-    //     printf("Element not found\n\r");
-    // }
+    // 8. Reverse
+    printf(">>>>>>>>>>>>   8. Reverse linked lisе\n\r");
+    reverse(&head);
+    printf("Linked list after reverse\n\r");
+    printList();
 }
 // ------------------------------------------------------------------------------------------------
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Print all list
 void printList(void)
@@ -109,17 +141,10 @@ void insertFirst(int key, int data)
 }
 // ------------------------------------------------------------------------------------------------
 // Delete firct item
-struct node* deleteFirst()
+struct node* deleteFirst(void)
 {
-    struct node *ptr = head; 
-
-    struct node *tempLink;           // Save refernse to first link
-    tempLink = (struct nade*) malloc(sizeof (struct node));
-
-    //head = head->next;
-
-    // struct node *tempLink = head;           // Save refernse to first link
-    // head = head -> next;                    // Mark next to first link
+    struct node *tempLink = head;           // Create pointer
+    head = head->next;                      // Mark next to first link as first               
 
     return tempLink;                        // Return the deleted link
 }
@@ -131,7 +156,7 @@ bool isEmpty(void)
 }
 // ------------------------------------------------------------------------------------------------
 // How meny elements on linked list
-int length(void)
+int lenght(void)
 {
     int lenght = 0;
     struct node *current;
@@ -144,63 +169,111 @@ int length(void)
 }
 // ------------------------------------------------------------------------------------------------
 // Find a link with given key
-// struct node *find(int key)
-// {
-//     struct node* current = head;        // Start from the first link
+struct node *find(int key)
+{
+    struct node* current = head;        // Start from the first link
 
-//     if(head == NULL)
-//     {
-//         return NULL;
-//     }
+    if(head == NULL)
+    {
+        return NULL;
+    }
 
-//     while(current->key != key)          // Navigate through list
-//     {
-//         if(current->next == NULL)       // Found end of list
-//         {
-//             return NULL;                // 
-//         }
-//         else                            // Go on find
-//         {
-//             current = current->next;
-//         }
-//     }
-//     return current;                     
-// }
+    while(current->key != key)          // Navigate through list
+    {
+        if(current->next == NULL)       // Found end of list
+        {
+            return NULL;                // 
+        }
+        else                            // Go on find
+        {
+            current = current->next;
+        }
+    }
+    return current;                     
+}
 // ------------------------------------------------------------------------------------------------
 // Delete a link with given ke
-// struct node* delete(int key)  
-// {
-//     // start from the first link
-//     struct node* current = head;
-//     struct node* previous = NULL;
+struct node* delete(int key)  
+{
+    // start from the first link
+    struct node* current = head;
+    struct node* previous = NULL;
 
-//     if(head == NULL)                // If list is empty
-//     {
-//         return NULL;
-//     }
+    if(head == NULL)                    // If list is empty (protection)
+    {
+        return NULL;
+    }
     
-//     while(current->key != key)      // Find target key
-//     {   
-//         if(current->key != NULL)        // If found last element
-//         {
-//             return NULL;
-//         }
-//         else
-//         {
-//             previous = current;         // Store reference to current link
-//             current = current->next;    // muve to next list
-//         }
-//     }
-//     if(current == head)                 // Found a match, update the link   ???????
-//     {   
-//         head = head->next;              // Change first to point to next link
-//     }
-//     else
-//     {
-//         previous->next = current->next;  // bypass the current link
-//     }
-//     return current;
-// }
+    while(current->key != key)          // Find target key
+    {   
+        if(current->key == NULL)        // If found last element
+        {
+            return NULL;
+        }
+        else
+        {
+            previous = current;         // Store reference to current link
+            current = current->next;    // muve to next list
+        }
+    }
+    if(current == head)                 // Found a match, update the link   ???????
+    {   
+        head = head->next;              // Change first to point to next link
+    }
+    else
+    {
+        previous->next = current->next;  // bypass the current link
+    }
+    return current;
+}
+// ------------------------------------------------------------------------------------------------
+void sort(void)
+{
+    int i, j, k, tempKey, tempData;   
+    struct node *current;                               // Local pointer
+    struct node *next;                                  // Local pointer
+
+    int size = lenght();
+    k = size;
+
+    for(i = 0; i < size - 1; i++, k--)
+    {   
+        current = head;                                 // Start from head
+        next = head->next;                              // Point on next  
+        for(j = 1; j < k; j++)
+        {
+            if(current->data > next->data)              // Condition
+            {
+                // Swap "data" field
+                tempData = current->data;
+                current->data = next->data;
+                next->data = tempData;
+                // Swap "key" field
+                tempKey = current->key;
+                current->key = next->key;
+                next->key = tempKey;
+            }
+            current = current->next;                    // Muve on next node  
+            next = next->next;
+        }
+    }
+}
+// ------------------------------------------------------------------------------------------------
+void reverse(struct node** head_ref)
+{
+    struct node* prev = NULL;
+    struct node* current = *head_ref;
+    struct node* next;
+
+    while(current != NULL)                      // Do it till the end of list
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    *head_ref = prev;
+}
 // ------------------------------------------------------------------------------------------------
 
 
@@ -213,26 +286,3 @@ int length(void)
 
 
 
-
-
-// // ------------------------------------------------------------------------------------------
-// void linked_list_function_1(void)
-// {
-//     printf("linked_list_function_1\n\r");
-// }
-// // ------------------------------------------------------------------------------------------
-// void linked_list_function_2(void)
-// {
-//     printf("linked_list_function_2\n\r");
-// }
-// // ------------------------------------------------------------------------------------------
-// void linked_list_function_3(void)
-// {
-//     printf("linked_list_function_3\n\r");
-// }
-// // ------------------------------------------------------------------------------------------
-// void linked_list_function_4(void)
-// {
-//     printf("linked_list_function_4\n\r");
-// }
-// // ------------------------------------------------------------------------------------------

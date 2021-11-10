@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// ------------------------------------------------------------------------------------------------
 
-void linked_list_main_function_2(void)
+// ------------------------------------------------------------------------------------------------
+void doubly_linked_list_main_function(void)
 {
-    printf("LINKED LIST\n\r");
+    printf("DOUBLY LINKED LIST\n\r");
 
 
 
