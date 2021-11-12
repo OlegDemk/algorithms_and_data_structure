@@ -12,7 +12,7 @@ int main()
     // update_element_on_array();
 
     // LINKED LISTs
-    linked_lists_main_functions();   
+    // linked_lists_main_functions();   
 
     doubly_linked_list_main_function();
 
