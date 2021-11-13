@@ -3,5 +3,4 @@
 
 void linked_lists_main_functions(void);
 
-
 #endif  // LINKED_LIST_H_INCLUDED
