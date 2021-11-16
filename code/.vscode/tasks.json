@@ -9,7 +9,8 @@
                 "-g",
                 "${file}","arrays/arrays.c","linked_lists/linked_list.c","test/test.c",
                 "linked_lists/doubly_linked_list.c","linked_lists/circular_linked_list.c",
-                 "stack/stack.c",
+                 "stack/stack.c", "expression_parsing/expression_parsing.c",
+                 "queue/queue.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
