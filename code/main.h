@@ -10,3 +10,6 @@
 #include "stack/stack.h"
 #include "expression_parsing/expression_parsing.h"
 #include "queue/queue.h"
+#include "searching/linear_search.h"
+#include "searching/binary_search.h"
+#include "searching/interpolation_search.h"

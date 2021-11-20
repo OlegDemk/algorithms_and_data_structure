@@ -18,7 +18,19 @@ int main()
 
     // stack_main_function();
     // expression_parsing_main_function();         // Nothing
-    qeue_main_function();
+    // qeue_main_function();
+
+    // SEARCH
+    // Every functions print index found element, and how meny
+    // iterations was made.
+    int target_data = 45;       
+    linear_search_main_function(target_data);
+    binary_search_main_function(target_data);
+    interpolation_search_main_function(target_data);
+
+
+
+ 
 
 
     // main_test_file();

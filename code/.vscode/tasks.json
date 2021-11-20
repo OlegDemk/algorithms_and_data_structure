@@ -11,6 +11,7 @@
                 "linked_lists/doubly_linked_list.c","linked_lists/circular_linked_list.c",
                  "stack/stack.c", "expression_parsing/expression_parsing.c",
                  "queue/queue.c",
+                 "searching/linear_search.c","searching/binary_search.c", "searching/interpolation_search.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
