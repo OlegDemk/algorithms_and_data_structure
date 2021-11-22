@@ -13,3 +13,4 @@
 #include "searching/linear_search.h"
 #include "searching/binary_search.h"
 #include "searching/interpolation_search.h"
+#include "hash/hash.h"

@@ -1,0 +1,6 @@
+#ifndef HASH_MAIN_FUNCTION_H_INCLUDED
+#define HASH_MAIN_FUNCTION_H_INCLUDED
+
+void hash_main_function(void);
+
+#endif  // HASH_MAIN_FUNCTION_H_INCLUDED
